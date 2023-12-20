@@ -1,6 +1,7 @@
 import os
 import re
 from typing import Iterator, Optional, Union
+import threading
 
 from .api import TTS, Model, OutputFormat, Voice, VoiceClone, Voices, VoiceSettings
 
@@ -38,6 +39,7 @@ def generate(
     api_key: Optional[str] = None,
     voice: Union[str, Voice] = DEFAULT_VOICE,
     model: Union[str, Model] = "eleven_monolingual_v1",
+    stop_stream: threading.Event,
     stream: bool = False,
     latency: int = 1,
     output_format: OutputFormat = "mp3_44100_128",
