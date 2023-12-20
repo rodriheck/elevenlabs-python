@@ -36,7 +36,7 @@ def is_voice_id(val: str) -> bool:
 
 def generate(
     text: Union[str, Iterator[str]],
-    stop_stream: threading.Event,
+    stop_event: threading.Event,
     api_key: Optional[str] = None,
     voice: Union[str, Voice] = DEFAULT_VOICE,
     model: Union[str, Model] = "eleven_monolingual_v1",
