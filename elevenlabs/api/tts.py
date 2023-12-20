@@ -4,6 +4,7 @@ import base64
 import json
 import os
 from typing import Iterator, Literal, Optional
+import threading
 
 import websockets
 from websockets.sync.client import connect
@@ -88,7 +89,7 @@ class TTS(API):
         text: Iterator[str],
         voice: Voice,
         model: Model,
-        stop_event,
+        stop_event: threading.Event,
         api_key: Optional[str] = None,
         output_format: OutputFormat = "mp3_44100_128",
         latency: int = 1,
